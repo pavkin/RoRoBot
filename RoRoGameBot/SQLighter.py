@@ -3,8 +3,8 @@ import sqlite3
 
 class SQLighter:
 
-    def __init__(self, database):
-        self.connection = sqlite3.connect(database)
+    def __init__(self, database_name):
+        self.connection = sqlite3.connect(database_name)
         self.cursor = self.connection.cursor()
 
     def select_all(self):
@@ -29,8 +29,7 @@ class SQLighter:
             players = self.cursor.execute('SELECT * FROM players WHERE chat_id = ?', (chat_id, )).fetchall()
             if len(players) == 0:
                 return False
-            else:
-                return True
+            return True
             
     def insert_player(self, chat_id):
         """ Добавляем нового пользователя """
@@ -54,6 +53,12 @@ class SQLighter:
         """ Обновляем badge для пользователя chat_id """
         with self.connection:
             self.cursor.execute("UPDATE players SET board = '" + str(board) + "' WHERE chat_id = '" + str(chat_id) + "'")
+            self.connection.commit()
+
+    def update_begin(self, chat_id, begin):
+        """ Обновляем begin для пользователя chat_id """
+        with self.connection:
+            self.cursor.execute("UPDATE players SET begin = " + str(begin) + " WHERE chat_id = '" + str(chat_id) + "'")
             self.connection.commit()
 
     def close(self):
