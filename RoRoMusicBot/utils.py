@@ -53,7 +53,6 @@ def get_answer_for_user(chat_id):
         try:
             answer = storage[str(chat_id)]
             return answer
-        # Если человек не играет, ничего не возвращаем
         except KeyError:
             return None
 
@@ -65,15 +64,11 @@ def generate_markup(right_answer, wrong_answers):
     :return: Объект кастомной клавиатуры
     """
     markup = types.ReplyKeyboardMarkup(one_time_keyboard=True, resize_keyboard=True)
-    # Склеиваем правильный ответ с неправильными
     all_answers = '{},{}'.format(right_answer, wrong_answers)
-    # Создаем лист (массив) и записываем в него все элементы
     list_items = []
     for item in all_answers.split(','):
         list_items.append(item)
-    # Хорошенько перемешаем все элементы
     shuffle(list_items)
-    # Заполняем разметку перемешанными элементами
     for item in list_items:
         markup.add(item)
     return markup

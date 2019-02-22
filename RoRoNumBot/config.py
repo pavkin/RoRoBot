@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-token = '778769196:AAFFx3wgmFWMe_2Tqs_H5gwZ5WYi6KVCcMA'
+token = 'YOUR_TOKEN'
 
 database_name = 'nums.db'
 database_table = 'players'
