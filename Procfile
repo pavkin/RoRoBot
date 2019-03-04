@@ -1,1 +1,1 @@
-bot: python RoRoMusicBot.py
+web: python RoRoMusicBot.py
