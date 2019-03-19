@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
 
-token = '730610480:AAGvFIXpeGb1vDAsuZrHUsGPHKLjq6y2A9Q'
+token = 'YOUR_TOKEN'
 database_name = 'music.db'
 shelve_name = 'shelve.db'
